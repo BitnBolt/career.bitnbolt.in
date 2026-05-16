@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AuthProvider } from "@/components/providers/auth-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
@@ -17,11 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Careers | BitnBolt",
-    template: "%s | BitnBolt Careers",
+    default: "Internships | BitnBolt",
+    template: "%s | BitnBolt Internships",
   },
   description:
-    "Explore engineering careers at BitnBolt — embedded systems, IoT, firmware, hardware, and cloud roles.",
+    "Apply for engineering internships at BitnBolt — embedded systems, firmware, hardware, IoT platform, and software tracks in Bengaluru.",
 };
 
 export default function RootLayout({
@@ -35,11 +34,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <AuthProvider>
-          <SiteHeader />
-          <div className="flex flex-1 flex-col">{children}</div>
-          <SiteFooter />
-        </AuthProvider>
+        <SiteHeader />
+        <div className="flex flex-1 flex-col">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );

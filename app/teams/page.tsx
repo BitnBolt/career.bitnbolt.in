@@ -4,14 +4,16 @@ import { teams } from "@/lib/content";
 
 export const metadata = {
   title: "Teams",
+  description:
+    "Engineering teams at BitnBolt where interns contribute — firmware, hardware, IoT platform, cloud, and software.",
 };
 
 export default function TeamsPage() {
   return (
     <main>
       <PageHeader
-        title="Teams"
-        description="Explore opportunities across the disciplines that deliver end-to-end IoT solutions."
+        title="Teams you may join"
+        description="Our internships are organised by engineering discipline. Depending on your track, you will be placed with one of these teams and contribute to live IoT projects."
         backHref="/"
         backLabel="Home"
       />
@@ -28,10 +30,10 @@ export default function TeamsPage() {
         </ul>
         <p className="mt-10 text-sm text-muted">
           <Link
-            href="/jobs"
+            href="/#internships"
             className="font-medium text-accent transition-colors hover:text-accent-hover"
           >
-            View open roles by team →
+            View internship programs and apply →
           </Link>
         </p>
       </div>

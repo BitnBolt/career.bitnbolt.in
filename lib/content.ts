@@ -1,49 +1,49 @@
 export const companyValues = [
   {
-    title: "Hardware-first engineering",
+    title: "Learn on real hardware",
     description:
-      "We design boards, firmware, and cloud stacks together — not as handoffs. You see your code run on real silicon in the lab.",
+      "Interns work in the lab with development boards, custom PCBs, and test equipment — not simulated environments. You see firmware run on silicon your team designed.",
   },
   {
-    title: "Production-grade standards",
+    title: "Mentorship that ships",
     description:
-      "From EMI-aware layouts to OTA pipelines, we build what ships to factories and field deployments, not demo-day prototypes.",
+      "Senior engineers review your code, guide your designs, and include you in client discussions. You contribute to work that reaches production, not throwaway demos.",
   },
   {
-    title: "Cross-disciplinary teams",
+    title: "Cross-disciplinary exposure",
     description:
-      "Embedded, PCB, cloud, and application engineers sit in the same room. Problems get solved at the system level.",
+      "Depending on your track, you collaborate with firmware, hardware, cloud, and software teams. You learn how end-to-end IoT products come together.",
   },
   {
-    title: "Continuous learning",
+    title: "Structured growth",
     description:
-      "New protocols, MCUs, and cloud services are part of the job. We invest in mentorship, reviews, and shared technical depth.",
+      "Regular feedback, technical workshops, and increasing ownership over your internship. We invest in interns who want to grow as embedded and IoT engineers.",
   },
 ];
 
 export const teams = [
   {
     name: "Firmware & RTOS",
-    focus: "Bare-metal, FreeRTOS, protocol stacks, OTA",
+    focus: "Interns: drivers, protocol stacks, bare-metal & RTOS",
   },
   {
     name: "Hardware Engineering",
-    focus: "Schematic, PCB layout, DFM, validation",
+    focus: "Interns: schematic support, PCB layout, lab validation",
   },
   {
     name: "IoT Platform",
-    focus: "Device management, telemetry, rules, alerts",
+    focus: "Interns: APIs, device management, telemetry pipelines",
   },
   {
     name: "Cloud & Backend",
-    focus: "AWS/Azure, ingestion, security, scale",
+    focus: "Interns: ingestion, cloud services, integration work",
   },
   {
     name: "Software",
-    focus: "Dashboards, operator UIs, integrations",
+    focus: "Interns: dashboards, web UIs, internal tools",
   },
   {
     name: "Delivery",
-    focus: "Client programs, timelines, quality gates",
+    focus: "Interns: documentation, testing support, project coordination",
   },
 ];

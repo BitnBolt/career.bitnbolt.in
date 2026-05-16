@@ -2,10 +2,9 @@ import Link from "next/link";
 
 const footerLinks = [
   { href: "https://www.bitnbolt.in", label: "Company website", external: true },
-  { href: "/jobs", label: "Open roles", external: false },
-  { href: "/life", label: "Life at BitnBolt", external: false },
+  { href: "/#internships", label: "Internship programs", external: false },
+  { href: "/life", label: "Life as an intern", external: false },
   { href: "/teams", label: "Teams", external: false },
-  { href: "/login", label: "Sign in", external: false },
   { href: "mailto:careers@bitnbolt.com", label: "careers@bitnbolt.com", external: true },
 ];
 
@@ -17,8 +16,9 @@ export function SiteFooter() {
           <div className="max-w-sm">
             <p className="text-sm font-semibold text-foreground">BitnBolt</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Custom IoT, embedded systems, and hardware engineering for
-              industries that depend on reliable connected products.
+              Engineering internships in IoT, embedded systems, and hardware. We
+              help students and recent graduates build production-grade connected
+              products.
             </p>
           </div>
 
@@ -54,8 +54,8 @@ export function SiteFooter() {
         <div className="mt-8 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} BitnBolt. All rights reserved.</p>
           <p>
-            Equal opportunity employer. We welcome applicants from all
-            backgrounds.
+            Equal opportunity employer. We welcome internship applicants from
+            all backgrounds.
           </p>
         </div>
       </div>
