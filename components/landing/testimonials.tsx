@@ -1,34 +1,16 @@
-import { SectionHeading } from "@/components/landing/section-heading";
-import { testimonials } from "@/lib/landing-content";
+import { TestimonialsCarousel } from "@/components/landing/testimonials-carousel";
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="scroll-mt-14 border-b border-border bg-surface">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Experiences"
-          title="What interns say"
-          description="Perspectives from engineering interns across tracks at BitnBolt."
-          align="center"
-        />
-        <ul className="mt-10 grid gap-6 lg:grid-cols-3">
-          {testimonials.map((item) => (
-            <li
-              key={item.name}
-              className="flex flex-col border border-border bg-surface-muted p-6"
-            >
-              <blockquote className="flex-1 text-sm leading-relaxed text-foreground">
-                &ldquo;{item.quote}&rdquo;
-              </blockquote>
-              <footer className="mt-6 border-t border-border pt-4">
-                <p className="text-sm font-semibold text-foreground">
-                  {item.name}
-                </p>
-                <p className="mt-1 text-xs text-muted">{item.role}</p>
-              </footer>
-            </li>
-          ))}
-        </ul>
+    <section
+      id="testimonials"
+      className="scroll-mt-14 border-b border-border bg-[#f3f4f2]"
+    >
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+        <h2 className="px-2 text-center font-serif text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+          What interns say
+        </h2>
+        <TestimonialsCarousel />
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ interface GoogleFormEmbedProps {
 export function GoogleFormEmbed({ compact = false }: GoogleFormEmbedProps) {
   if (!formUrl) {
     return (
-      <div className="border border-border bg-surface-muted p-8 text-center">
+      <div className="border border-border bg-surface-muted p-6 text-center sm:p-8">
         <p className="text-sm font-medium text-foreground">
           Application form not configured
         </p>
@@ -24,13 +24,18 @@ export function GoogleFormEmbed({ compact = false }: GoogleFormEmbedProps) {
     );
   }
 
+  const height = compact ? 900 : 1200;
+  const minHeight = compact
+    ? "min-h-[min(70vh,520px)] sm:min-h-[520px]"
+    : "min-h-[min(75vh,800px)] sm:min-h-[800px]";
+
   return (
-    <div className="border border-border bg-surface">
+    <div className="overflow-hidden border border-border bg-surface">
       <iframe
         src={formUrl}
         width="100%"
-        height={compact ? "900" : "1200"}
-        className={`block w-full border-0 ${compact ? "min-h-[520px]" : "min-h-[800px]"}`}
+        height={height}
+        className={`block w-full max-w-full border-0 ${minHeight}`}
         title="BitnBolt internship application"
       >
         Loading application form…

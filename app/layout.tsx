@@ -14,6 +14,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   title: {
     default: "Internships | BitnBolt",
@@ -21,6 +27,10 @@ export const metadata: Metadata = {
   },
   description:
     "Apply for engineering internships at BitnBolt — embedded systems, firmware, hardware, IoT platform, and software tracks in Bengaluru.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

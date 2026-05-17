@@ -30,7 +30,7 @@ export default function TeamsPage() {
         </ul>
         <p className="mt-10 text-sm text-muted">
           <Link
-            href="/#internships"
+            href="/internships"
             className="font-medium text-accent transition-colors hover:text-accent-hover"
           >
             View internship programs and apply →

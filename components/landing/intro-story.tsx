@@ -1,8 +1,12 @@
+import { ContentImage } from "@/components/content-image";
+import { SplitSection } from "@/components/split-section";
+import { pageImages } from "@/lib/page-images";
+
 export function IntroStory() {
   return (
-    <section className="border-b border-border bg-surface">
+    <section className="border-b border-border bg-surface-muted">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
+        <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             Start here
           </p>
@@ -17,9 +21,12 @@ export function IntroStory() {
             industrial clients.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-            We currently offer <strong className="font-medium text-foreground">internships only</strong>.
-            Explore the tracks below, find the fit for your skills, and apply when
-            you are ready.
+            We currently offer{" "}
+            <strong className="font-medium text-foreground">
+              internships only
+            </strong>
+            . Explore the tracks below, find the fit for your skills, and apply
+            when you are ready.
           </p>
         </div>
       </div>

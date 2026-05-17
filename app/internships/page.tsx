@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import { HomeLandingSections } from "@/components/landing/home-landing-sections";
-import { PageHeader } from "@/components/page-header";
+import { PageHero } from "@/components/page-hero";
 import { InternshipProgram } from "@/components/internships/internship-program";
+import { pageImages } from "@/lib/page-images";
 
 export const metadata = {
   title: "Internship programs",
@@ -20,17 +20,9 @@ function InternshipFallback() {
 export default function InternshipsPage() {
   return (
     <main>
-      <PageHeader
-        title="Internship programs"
-        description="BitnBolt currently offers engineering internships only. Select a track, read the details, and apply below."
-        backHref="/"
-        backLabel="Home"
-      />
-      <HomeLandingSections variant="before-programs" />
       <Suspense fallback={<InternshipFallback />}>
-        <InternshipProgram />
+        <InternshipProgram applyMode="inline" showTitle={false} />
       </Suspense>
-      <HomeLandingSections variant="after-programs" />
     </main>
   );
 }

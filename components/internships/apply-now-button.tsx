@@ -7,7 +7,7 @@ const variants = {
     "border border-accent bg-accent text-accent-foreground hover:border-accent-hover hover:bg-accent-hover",
   secondary:
     "border border-border bg-surface text-foreground hover:border-border-strong hover:bg-surface-muted",
-  hero: "border border-white/20 text-header-fg hover:border-white/40 hover:bg-white/5",
+  hero: "border border-border bg-surface text-foreground hover:border-border-strong hover:bg-surface-muted",
 } as const;
 
 interface ApplyNowButtonProps {
@@ -29,7 +29,7 @@ export function ApplyNowButton({
     <button
       type="button"
       onClick={() => openApply(categoryLabel)}
-      className={`px-5 py-2.5 text-sm font-medium transition-colors ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium transition-colors ${variants[variant]} ${className}`}
     >
       {children}
     </button>

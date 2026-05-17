@@ -160,7 +160,7 @@ export function InternshipProgram({
           )}
 
           <div
-            className="mt-8 flex gap-0 overflow-x-auto border-b border-border"
+            className="scrollbar-hide -mx-4 mt-8 flex snap-x snap-mandatory gap-0 overflow-x-auto border-b border-border px-4 sm:mx-0 sm:px-0"
             role="tablist"
             aria-label="Internship categories"
           >
@@ -173,7 +173,7 @@ export function InternshipProgram({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setCategory(cat.id)}
-                  className={`shrink-0 border-b-2 px-4 py-3 text-sm font-medium transition-colors sm:px-5 ${
+                  className={`shrink-0 snap-start border-b-2 px-3 py-3.5 text-xs font-medium transition-colors min-[360px]:text-sm sm:px-5 ${
                     isActive
                       ? "border-accent text-foreground"
                       : "border-transparent text-muted hover:border-border-strong hover:text-foreground"
@@ -207,29 +207,19 @@ export function InternshipProgram({
               </div>
             </>
           ) : null}
+
+          {applyMode === "inline" ? (
+            <div id="apply" className="scroll-mt-14 border-t border-border pt-10">
+              <h2 className="text-lg font-semibold text-foreground">
+                Apply for {active.tabLabel}
+              </h2>
+              <div className="mt-6">
+                <GoogleFormEmbed />
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
-
-      {applyMode === "inline" ? (
-        <section
-          id="apply"
-          className="scroll-mt-14 border-t border-border bg-surface-muted"
-        >
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-semibold text-foreground">
-            Apply for {active.tabLabel}
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm text-muted">
-            BitnBolt currently accepts applications for internships only.
-            Complete the form below for the track that matches your background.
-            Our team will review submissions and contact shortlisted candidates.
-          </p>
-          <div className="mt-8">
-            <GoogleFormEmbed />
-          </div>
-        </div>
-      </section>
-      ) : null}
     </>
   );
 }

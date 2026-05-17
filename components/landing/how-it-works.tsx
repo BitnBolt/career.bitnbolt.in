@@ -11,7 +11,7 @@ export function HowItWorks() {
           description="From application to onboarding — a clear, transparent path."
           align="center"
         />
-        <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {howItWorksSteps.map((item) => (
             <li
               key={item.step}
