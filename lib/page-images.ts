@@ -1,8 +1,8 @@
 /**
  * Image placeholders — replace `asset` paths under /public when you have final art.
- * Until then, `src` uses /hero.jpg so layouts render correctly.
+ * Until then, `src` uses /hero.png so layouts render correctly.
  */
-const placeholder = "/hero.jpg";
+const placeholder = "/hero.png";
 
 export type PageImage = {
   src: string;
@@ -17,9 +17,9 @@ function img(
   alt: string,
   width: number,
   height: number,
-  src: string = placeholder,
+  src?: string,
 ): PageImage {
-  return { src, alt, asset, width, height };
+  return { src: src ?? asset, alt, asset, width, height };
 }
 
 export const pageImages = {
@@ -28,7 +28,6 @@ export const pageImages = {
     "Students building engineering careers at BitnBolt",
     1200,
     675,
-    "/hero.jpg",
   ),
   intro: img("/images/sections/intro.jpg", "Engineering student starting an internship", 800, 600),
   whatWeOffer: img(

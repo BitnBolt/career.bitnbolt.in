@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { CapRoadmap } from "@/components/cap/cap-roadmap";
 import { ContentImage } from "@/components/content-image";
 import { PageHero } from "@/components/page-hero";
 import { SplitSection } from "@/components/split-section";
 import {
   capHighlights,
   capOverview,
+  capRoadmap,
   capSteps,
   capVsInternship,
   capWhoItsFor,
@@ -12,9 +14,9 @@ import {
 import { pageImages } from "@/lib/page-images";
 
 export const metadata = {
-  title: "Career Accelerator Program (CAP)",
+  title: "Career Accelerator Program for Full-Stack IoT Technology",
   description:
-    "BitnBolt CAP — a cohort-based career accelerator for early-career engineers in IoT, embedded systems, and hardware.",
+    "BitnBolt CAP — a 24-week, cohort-based career accelerator covering electronics, embedded firmware, cloud infrastructure, and IoT data analytics.",
 };
 
 const capHighlightImages = [
@@ -35,7 +37,7 @@ export default function CapPage() {
         reverse
       />
 
-      {/* <section className="border-b border-border bg-surface-muted">
+      <section className="border-b border-border bg-surface-muted">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
           <SplitSection
             visual={
@@ -46,18 +48,32 @@ export default function CapPage() {
               />
             }
           >
-            <p className="text-sm leading-relaxed text-muted sm:text-base">
-              The Career Accelerator Program ({capOverview.shortName}) is
-              BitnBolt&apos;s structured path for engineers who are ready to ramp
-              faster than a standard internship. Participants join a cohort, work
-              on live IoT programs, and graduate with production-grade experience
-              across firmware, hardware, and connected systems.
-            </p>
+            {capOverview.intro.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 48)}
+                className="text-sm leading-relaxed text-muted sm:text-base [&+&]:mt-4"
+              >
+                {paragraph}
+              </p>
+            ))}
           </SplitSection>
         </div>
-      </section> */}
+      </section>
 
       <section className="border-b border-border bg-surface">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+          <h2 className="text-lg font-semibold text-foreground">
+            The IoT Career Accelerator Roadmap
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+            Six phases from basic electronics through a cohort-based capstone —
+            building production-grade IoT skills week by week.
+          </p>
+          <CapRoadmap phases={capRoadmap} />
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-surface-muted">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
           <h2 className="text-lg font-semibold text-foreground">
             What CAP offers
@@ -87,7 +103,7 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface-muted">
+      <section className="border-b border-border bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
           <SplitSection
             reverse
@@ -120,7 +136,7 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
+      <section className="border-b border-border bg-surface-muted">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
           <SplitSection
             visual={
@@ -156,7 +172,7 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface-muted">
+      <section className="border-b border-border bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
           <h2 className="text-lg font-semibold text-foreground">
             CAP vs internships

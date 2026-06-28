@@ -1,9 +1,93 @@
 export const capOverview = {
-  title: "Career Accelerator Program",
+  title: "Career Accelerator Program for Full-Stack IoT Technology",
   shortName: "CAP",
   tagline:
-    "A structured accelerator for engineers ready to move from learning to leading on real IoT products.",
+    "A high-impact Career Accelerator Program (CAP) for IoT Project Development bridges the gap between academic theory and production-grade engineering.",
+  intro: [
+    "Because IoT is uniquely multi-disciplinary, a structured program must systematically build competencies across hardware, low-level programming, cloud architecture, and data visualization.",
+    "This comprehensive, step-by-step roadmap walks through a professional-grade Career Accelerator Program, moving from raw components to an enterprise-ready, data-driven ecosystem.",
+  ],
 };
+
+export type CapRoadmapPhase = {
+  phase: string;
+  title: string;
+  modules: { id: string; topic: string }[];
+  duration: string;
+};
+
+export const capRoadmap: CapRoadmapPhase[] = [
+  {
+    phase: "1",
+    title: "Basic Electronics to excel IoT",
+    modules: [
+      { id: "1.1", topic: "Orientation to Electronics & IoT" },
+      { id: "1.2", topic: "Electrical Fundamentals for Electronic Systems" },
+      { id: "1.3", topic: "Foundations of Electronic Circuits & Components" },
+      { id: "1.4", topic: "Basic Project and Its Interfacing" },
+    ],
+    duration: "1–3 Weeks",
+  },
+  {
+    phase: "2",
+    title: "Embedded Firmware Engineering",
+    modules: [
+      {
+        id: "2.1",
+        topic:
+          "Advanced Embedded C & Python Toolchains — learning C & Python with visualization",
+      },
+      { id: "2.2", topic: "Microcontroller Architectures and its Basics" },
+      { id: "2.3", topic: "Interfacing with Sensors & Actuators" },
+    ],
+    duration: "4–8 Weeks",
+  },
+  {
+    phase: "3",
+    title: "Local Networks & Visual Dashboards",
+    modules: [
+      { id: "3.1", topic: "Industrial Communication Protocols" },
+      { id: "3.2", topic: "Dashboard Designing & Development" },
+      { id: "3.3", topic: "Database Integration" },
+    ],
+    duration: "9–12 Weeks",
+  },
+  {
+    phase: "4",
+    title: "Cloud Infrastructure",
+    modules: [
+      {
+        id: "4.1",
+        topic: "IoT Transport Protocols & Remote Device Management",
+      },
+      {
+        id: "4.2",
+        topic: "Enterprise Cloud Integration (AWS IoT Core / Azure IoT Hub)",
+      },
+    ],
+    duration: "14–16 Weeks",
+  },
+  {
+    phase: "5",
+    title: "IoT Data Analytics & Edge Intelligence",
+    modules: [
+      { id: "5.1", topic: "High-Throughput Time-Series Storage" },
+      { id: "5.2", topic: "Live Visualizations & Real-Time Alerts" },
+      { id: "5.3", topic: "Proactive & Predictive Analytics" },
+    ],
+    duration: "17–20 Weeks",
+  },
+  {
+    phase: "6",
+    title: "Capstone Project (Cohort-based)",
+    modules: [
+      { id: "6.1", topic: "Realtime Project Implementation with Report" },
+      { id: "6.2", topic: "Open-Source Documentation & Version Control" },
+      { id: "6.3", topic: "Prototype to Product Journey" },
+    ],
+    duration: "21–24 Weeks",
+  },
+];
 
 export const capHighlights = [
   {
