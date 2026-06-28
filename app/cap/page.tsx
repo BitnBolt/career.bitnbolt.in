@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CapRoadmap } from "@/components/cap/cap-roadmap";
+import { CapCurriculum } from "@/components/cap/cap-curriculum";
 import { ContentImage } from "@/components/content-image";
 import { PageHero } from "@/components/page-hero";
 import { SplitSection } from "@/components/split-section";
@@ -62,14 +62,13 @@ export default function CapPage() {
 
       <section className="border-b border-gray-100 bg-white py-12">
         <div className="section-container">
-          <h2 className="heading-section">
-            The IoT Career Accelerator Roadmap
-          </h2>
+          <h2 className="heading-section">Program curriculum</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
-            Six phases from basic electronics through a cohort-based capstone —
-            building production-grade IoT skills week by week.
+            Six phases from basic electronics through a cohort-based capstone.
+            Expand each phase to see its modules — the same structure you would
+            follow week by week in the program.
           </p>
-          <CapRoadmap phases={capRoadmap} />
+          <CapCurriculum phases={capRoadmap} />
         </div>
       </section>
 
