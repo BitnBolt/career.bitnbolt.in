@@ -5,8 +5,8 @@ import { pageImages } from "@/lib/page-images";
 
 export function WhatWeOffer() {
   return (
-    <section id="what-we-offer" className="scroll-mt-14 border-b border-border bg-surface">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <section id="what-we-offer" className="scroll-mt-16 border-b border-gray-100 bg-white py-14">
+      <div className="section-container">
         <SectionHeading
           eyebrow="Program benefits"
           title="What does the internship offer?"
@@ -21,18 +21,15 @@ export function WhatWeOffer() {
         />
         <ul className="mt-10 grid gap-6 sm:grid-cols-2">
           {programOffers.map((item) => (
-            <li
-              key={item.title}
-              className="border border-border bg-surface-muted"
-            >
+            <li key={item.title} className="card-bitnbolt overflow-hidden">
               <ContentImage
                 image={item.image}
                 aspect="3/2"
                 objectFit="cover"
-                className="[&_figcaption]:px-4"
+                className="[&_div]:rounded-none [&_div]:border-0 [&_div]:shadow-none [&_figcaption]:px-4"
               />
               <div className="p-5 sm:p-6">
-                <h3 className="text-sm font-semibold text-foreground">
+                <h3 className="text-sm font-bold text-[#0B1C2D]">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">

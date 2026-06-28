@@ -1,16 +1,10 @@
-import { ContentImage } from "@/components/content-image";
-import { SplitSection } from "@/components/split-section";
-import { pageImages } from "@/lib/page-images";
-
 export function IntroStory() {
   return (
-    <section className="border-b border-border bg-surface-muted">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            Start here
-          </p>
-          <h2 className="mt-3 text-2xl font-semibold leading-tight text-foreground sm:text-3xl">
+    <section className="border-b border-gray-100 bg-white py-14">
+      <div className="section-container">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="eyebrow">Start here</p>
+          <h2 className="heading-section mt-3">
             Your coursework is the foundation. Your internship is the launch.
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base">
@@ -22,7 +16,7 @@ export function IntroStory() {
           </p>
           <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
             We currently offer{" "}
-            <strong className="font-medium text-foreground">
+            <strong className="font-semibold text-[#0B1C2D]">
               internships only
             </strong>
             . Explore the tracks below, find the fit for your skills, and apply

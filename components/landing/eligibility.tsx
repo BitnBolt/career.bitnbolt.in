@@ -5,8 +5,8 @@ import { pageImages } from "@/lib/page-images";
 
 export function Eligibility() {
   return (
-    <section id="eligibility" className="scroll-mt-14 border-b border-border bg-surface">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <section id="eligibility" className="scroll-mt-16 border-b border-gray-100 bg-gray-50 py-14">
+      <div className="section-container">
         <SplitSection
           reverse
           visual={
@@ -18,23 +18,19 @@ export function Eligibility() {
           }
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-              Requirements
-            </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground sm:text-2xl">
-              Eligibility criteria
-            </h2>
+            <p className="eyebrow">Requirements</p>
+            <h2 className="heading-section mt-2">Eligibility criteria</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
               Check that you meet these before applying.
             </p>
-            <ul className="mt-8 space-y-4 border border-border bg-surface-muted p-6 sm:p-8">
+            <ul className="mt-8 space-y-4 rounded-lg border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
               {eligibilityItems.map((item) => (
                 <li
                   key={item}
                   className="flex gap-3 text-sm leading-relaxed text-muted"
                 >
                   <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent"
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"
                     aria-hidden
                   />
                   <span>{item}</span>

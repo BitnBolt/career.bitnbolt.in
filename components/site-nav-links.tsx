@@ -22,10 +22,10 @@ function NavLink({
   return (
     <Link
       href={href}
-      className={`shrink-0 px-3 py-2 text-sm transition-colors ${
+      className={`shrink-0 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
         isActive
-          ? "bg-accent-muted text-foreground"
-          : "text-muted hover:bg-surface-muted hover:text-foreground"
+          ? "bg-blue-50 text-blue-600"
+          : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
       }`}
       aria-current={isActive ? "page" : undefined}
     >

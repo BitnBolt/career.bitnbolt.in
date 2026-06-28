@@ -32,7 +32,7 @@ export function ContentImage({
   return (
     <figure className={className}>
       <div
-        className={`relative overflow-hidden border border-border bg-surface-muted ${aspectClasses[aspect]}`}
+        className={`relative overflow-hidden rounded-lg border border-gray-100 bg-gray-50 shadow-sm ${aspectClasses[aspect]}`}
       >
         <Image
           src={image.src}
@@ -45,7 +45,7 @@ export function ContentImage({
       </div>
       {showAssetHint ? (
         <figcaption className="mt-2 hidden text-[10px] text-muted sm:block">
-          Replace: <code className="bg-chip-bg px-1 py-0.5">public{image.asset}</code>
+          Replace: <code className="rounded bg-chip-bg px-1 py-0.5">public{image.asset}</code>
         </figcaption>
       ) : null}
     </figure>

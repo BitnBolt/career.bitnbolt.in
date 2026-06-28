@@ -42,18 +42,18 @@ export function ApplyFormModal({
     >
       <button
         type="button"
-        className="absolute inset-0 bg-foreground/20"
+        className="absolute inset-0 bg-[#0B1C2D]/50"
         aria-label="Close application form"
         onClick={onClose}
       />
 
-      <div className="relative flex max-h-[92dvh] w-full max-w-3xl flex-col border border-border bg-surface shadow-lg sm:max-h-[92vh]">
-        <div className="flex items-start justify-between gap-3 border-b border-border bg-surface-muted px-4 py-3 sm:gap-4 sm:px-5 sm:py-4">
+      <div className="relative flex max-h-[92dvh] w-full max-w-3xl flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-2xl sm:max-h-[92vh]">
+        <div className="flex items-start justify-between gap-3 border-b border-gray-100 bg-gray-50 px-4 py-3 sm:gap-4 sm:px-5 sm:py-4">
           <div className="min-w-0 flex-1 pr-1">
             <SiteLogo linked={false} framed heightClass="h-8" className="mb-2 sm:mb-3" />
             <h2
               id="apply-modal-title"
-              className="text-base font-semibold text-foreground sm:text-lg"
+              className="text-base font-bold text-[#0B1C2D] sm:text-lg"
             >
               Apply for {categoryLabel}
             </h2>
@@ -64,7 +64,7 @@ export function ApplyFormModal({
           <button
             type="button"
             onClick={onClose}
-            className="flex min-h-11 min-w-11 shrink-0 items-center justify-center border border-border px-3 text-sm text-muted transition-colors hover:border-border-strong hover:bg-background hover:text-foreground"
+            className="flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg border border-gray-200 px-3 text-sm text-muted transition-colors hover:border-gray-300 hover:bg-white hover:text-[#0B1C2D]"
             aria-label="Close"
           >
             Close

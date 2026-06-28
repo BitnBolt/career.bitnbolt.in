@@ -91,9 +91,9 @@ export function TestimonialsCarousel() {
         {testimonials.map((item) => (
           <article
             key={item.name}
-            className="w-[calc(100vw-2.5rem)] max-w-[300px] shrink-0 snap-start rounded-2xl bg-surface p-5 shadow-[0_4px_24px_rgba(15,20,25,0.08)] sm:w-[min(85vw,300px)] sm:p-6"
+            className="w-[calc(100vw-2.5rem)] max-w-[300px] shrink-0 snap-start rounded-lg border border-gray-100 bg-white p-5 shadow-md transition-shadow hover:shadow-lg sm:w-[min(85vw,300px)] sm:p-6"
           >
-            <blockquote className="min-h-[6.5rem] font-serif text-sm leading-relaxed text-muted sm:min-h-[7.5rem]">
+            <blockquote className="min-h-[6.5rem] text-sm leading-relaxed text-muted sm:min-h-[7.5rem]">
               &ldquo;{item.quote}&rdquo;
             </blockquote>
             <footer className="mt-5 flex items-center gap-3 border-t border-border/60 pt-4 sm:mt-6 sm:pt-5">
@@ -107,7 +107,7 @@ export function TestimonialsCarousel() {
                 />
               </div>
               <div className="min-w-0">
-                <p className="truncate text-sm font-semibold text-foreground">
+                <p className="truncate text-sm font-bold text-[#0B1C2D]">
                   {item.name}
                 </p>
                 <p className="truncate text-xs text-muted">{item.role}</p>
@@ -125,7 +125,7 @@ export function TestimonialsCarousel() {
           type="button"
           onClick={() => scrollToIndex(activeIndex - 1)}
           disabled={activeIndex === 0}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border-strong bg-surface text-foreground transition-colors hover:bg-surface-muted disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-[#0B1C2D] shadow-sm transition-colors hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40"
           aria-label="Previous testimonial"
         >
           <ChevronIcon direction="left" />
@@ -139,7 +139,7 @@ export function TestimonialsCarousel() {
               onClick={() => scrollToIndex(index)}
               className={`h-2.5 shrink-0 rounded-full transition-colors ${
                 index === activeIndex
-                  ? "w-2.5 bg-success"
+                  ? "w-2.5 bg-blue-600"
                   : "w-2.5 bg-border-strong hover:bg-muted"
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
@@ -152,7 +152,7 @@ export function TestimonialsCarousel() {
           type="button"
           onClick={() => scrollToIndex(activeIndex + 1)}
           disabled={activeIndex === testimonials.length - 1}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border-strong bg-surface text-foreground transition-colors hover:bg-surface-muted disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-[#0B1C2D] shadow-sm transition-colors hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40"
           aria-label="Next testimonial"
         >
           <ChevronIcon direction="right" />

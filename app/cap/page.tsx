@@ -37,8 +37,8 @@ export default function CapPage() {
         reverse
       />
 
-      <section className="border-b border-border bg-surface-muted">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-100 bg-gray-50 py-12">
+        <div className="section-container">
           <SplitSection
             visual={
               <ContentImage
@@ -60,9 +60,9 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <h2 className="text-lg font-semibold text-foreground">
+      <section className="border-b border-gray-100 bg-white py-12">
+        <div className="section-container">
+          <h2 className="heading-section">
             The IoT Career Accelerator Roadmap
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
@@ -73,24 +73,20 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface-muted">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <h2 className="text-lg font-semibold text-foreground">
-            What CAP offers
-          </h2>
+      <section className="border-b border-gray-100 bg-gray-50 py-12">
+        <div className="section-container">
+          <h2 className="heading-section">What CAP offers</h2>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2">
             {capHighlights.map((item, index) => (
-              <li
-                key={item.title}
-                className="border border-border bg-surface-muted"
-              >
+              <li key={item.title} className="card-bitnbolt overflow-hidden">
                 <ContentImage
                   image={capHighlightImages[index] ?? pageImages.offer.handsOn}
                   aspect="3/2"
                   objectFit="cover"
+                  className="[&_div]:rounded-none [&_div]:border-0 [&_div]:shadow-none"
                 />
                 <div className="p-6">
-                  <h3 className="text-sm font-semibold text-foreground">
+                  <h3 className="text-sm font-bold text-[#0B1C2D]">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -103,8 +99,8 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-100 bg-white py-12">
+        <div className="section-container">
           <SplitSection
             reverse
             visual={
@@ -115,17 +111,15 @@ export default function CapPage() {
               />
             }
           >
-            <h2 className="text-lg font-semibold text-foreground">
-              Who should apply
-            </h2>
-            <ul className="mt-6 space-y-4 border border-border bg-surface p-6 sm:p-8">
+            <h2 className="heading-section">Who should apply</h2>
+            <ul className="mt-6 space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6 shadow-sm sm:p-8">
               {capWhoItsFor.map((item) => (
                 <li
                   key={item}
                   className="flex gap-3 text-sm leading-relaxed text-muted"
                 >
                   <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent"
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"
                     aria-hidden
                   />
                   <span>{item}</span>
@@ -136,8 +130,8 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface-muted">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-100 bg-gray-50 py-12">
+        <div className="section-container">
           <SplitSection
             visual={
               <ContentImage
@@ -147,18 +141,15 @@ export default function CapPage() {
               />
             }
           >
-            <h2 className="text-lg font-semibold text-foreground">How CAP works</h2>
+            <h2 className="heading-section">How CAP works</h2>
             <ol className="mt-8 space-y-4">
               {capSteps.map((item) => (
-                <li
-                  key={item.step}
-                  className="flex gap-4 border border-border bg-surface-muted p-5"
-                >
-                  <span className="text-lg font-semibold text-accent">
+                <li key={item.step} className="card-bitnbolt flex gap-4 p-5">
+                  <span className="text-lg font-bold text-blue-600">
                     {item.step}
                   </span>
                   <div>
-                    <h3 className="text-sm font-semibold text-foreground">
+                    <h3 className="text-sm font-bold text-[#0B1C2D]">
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -172,18 +163,13 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <h2 className="text-lg font-semibold text-foreground">
-            CAP vs internships
-          </h2>
+      <section className="border-b border-gray-100 bg-white py-12">
+        <div className="section-container">
+          <h2 className="heading-section">CAP vs internships</h2>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2">
             {capVsInternship.map((item) => (
-              <li
-                key={item.label}
-                className="border border-border bg-surface p-6"
-              >
-                <h3 className="text-sm font-semibold text-foreground">
+              <li key={item.label} className="card-bitnbolt p-6">
+                <h3 className="text-sm font-bold text-[#0B1C2D]">
                   {item.label}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -195,32 +181,28 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <p className="text-sm text-muted">
-            Ready to apply? Use our internship application form and note your
-            interest in CAP in your submission, or email{" "}
-            <a
-              href="mailto:careers@bitnbolt.com"
-              className="text-accent transition-colors hover:text-accent-hover"
-            >
-              careers@bitnbolt.com
-            </a>
-            .
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/internships#apply"
-              className="border border-accent bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:border-accent-hover hover:bg-accent-hover"
-            >
-              Apply now
-            </Link>
-            <Link
-              href="/internships"
-              className="border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-border-strong hover:bg-surface-muted"
-            >
-              View internships
-            </Link>
+      <section className="bg-gray-50 py-12">
+        <div className="section-container">
+          <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
+            <p className="text-sm text-muted">
+              Ready to apply? Use our internship application form and note your
+              interest in CAP in your submission, or email{" "}
+              <a
+                href="mailto:careers@bitnbolt.com"
+                className="font-medium text-blue-600 transition-colors hover:text-blue-700"
+              >
+                careers@bitnbolt.com
+              </a>
+              .
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/internships#apply" className="btn-primary">
+                Apply now
+              </Link>
+              <Link href="/internships" className="btn-secondary">
+                View internships
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -20,21 +20,29 @@ export function SiteLogo({
   className = "",
   heightClass = "h-9",
 }: SiteLogoProps) {
+  const image = (
+    <Image
+      src={LOGO_PATH}
+      alt="BitnBolt"
+      width={1035}
+      height={1035}
+      priority={priority}
+      className={`${heightClass} w-auto max-w-full object-contain object-left`}
+    />
+  );
+
   const inner = (
-    <span
-      className={`inline-flex min-w-0 items-center gap-2 ${framed ? "border border-border bg-surface-muted p-2" : ""}`}
-    >
-      <Image
-        src={LOGO_PATH}
-        alt="BitnBolt"
-        width={1035}
-        height={1035}
-        priority={priority}
-        className={`${heightClass} w-auto max-w-full object-contain object-left`}
-      />
+    <span className="inline-flex min-w-0 items-center gap-2.5">
+      {framed ? (
+        <span className="rounded-lg bg-white p-1 shadow-sm ring-1 ring-black/5">
+          {image}
+        </span>
+      ) : (
+        image
+      )}
       {showTagline ? (
-        <span className="hidden text-[11px] font-medium uppercase tracking-widest text-muted sm:inline">
-          Internships
+        <span className="hidden text-[11px] font-semibold uppercase tracking-widest text-blue-600 sm:inline">
+          Careers
         </span>
       ) : null}
     </span>

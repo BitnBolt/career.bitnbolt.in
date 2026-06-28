@@ -38,7 +38,7 @@ function CategoryContent({ category }: { category: InternshipCategory }) {
 
   return (
     <div className="pt-8">
-      <h2 className="text-xl font-semibold text-foreground sm:text-2xl">
+      <h2 className="text-xl font-bold text-[#0B1C2D] sm:text-2xl">
         {category.title}
       </h2>
 
@@ -146,21 +146,17 @@ export function InternshipProgram({
     <>
       <div
         id={sectionId}
-        className="scroll-mt-14 border-b border-border bg-surface"
+        className="scroll-mt-16 border-b border-gray-100 bg-white py-10"
       >
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="section-container">
           {showTitle ? (
-            <h1 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Internship programs
-            </h1>
+            <h1 className="heading-section">Internship programs</h1>
           ) : (
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Internship programs
-            </h2>
+            <h2 className="heading-section">Internship programs</h2>
           )}
 
           <div
-            className="scrollbar-hide -mx-4 mt-8 flex snap-x snap-mandatory gap-0 overflow-x-auto border-b border-border px-4 sm:mx-0 sm:px-0"
+            className="scrollbar-hide -mx-4 mt-8 flex snap-x snap-mandatory gap-0 overflow-x-auto border-b border-gray-200 px-4 sm:mx-0 sm:px-0"
             role="tablist"
             aria-label="Internship categories"
           >
@@ -173,10 +169,10 @@ export function InternshipProgram({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setCategory(cat.id)}
-                  className={`shrink-0 snap-start border-b-2 px-3 py-3.5 text-xs font-medium transition-colors min-[360px]:text-sm sm:px-5 ${
+                  className={`shrink-0 snap-start border-b-2 px-3 py-3.5 text-xs font-semibold transition-colors min-[360px]:text-sm sm:px-5 ${
                     isActive
-                      ? "border-accent text-foreground"
-                      : "border-transparent text-muted hover:border-border-strong hover:text-foreground"
+                      ? "border-blue-600 text-blue-600"
+                      : "border-transparent text-gray-600 hover:border-gray-300 hover:text-[#0B1C2D]"
                   }`}
                 >
                   {cat.tabLabel}
@@ -192,8 +188,8 @@ export function InternshipProgram({
           {applyMode === "modal" ? (
             <>
               <HomeApplyLauncher categoryLabel={active.tabLabel} />
-              <div className="mt-10 border-t border-border pt-8">
-                <p className="text-sm font-medium text-foreground">
+              <div className="mt-10 rounded-lg border border-gray-100 bg-gray-50 p-6 sm:p-8">
+                <p className="text-sm font-bold text-[#0B1C2D]">
                   Ready to apply?
                 </p>
                 <p className="mt-2 max-w-xl text-sm text-muted">
@@ -209,11 +205,11 @@ export function InternshipProgram({
           ) : null}
 
           {applyMode === "inline" ? (
-            <div id="apply" className="scroll-mt-14 border-t border-border pt-10">
-              <h2 className="text-lg font-semibold text-foreground">
+            <div id="apply" className="scroll-mt-16 border-t border-gray-100 pt-10">
+              <h2 className="text-lg font-bold text-[#0B1C2D]">
                 Apply for {active.tabLabel}
               </h2>
-              <div className="mt-6">
+              <div className="mt-6 overflow-hidden rounded-lg border border-gray-100 shadow-sm">
                 <GoogleFormEmbed />
               </div>
             </div>

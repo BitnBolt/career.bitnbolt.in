@@ -22,21 +22,21 @@ export default function AboutPage() {
         image={pageImages.aboutBanner}
       />
 
-      <section className="border-b border-border bg-surface-muted">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-100 bg-gray-50 py-12">
+        <div className="section-container">
           <dl className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {aboutFacts.map((fact) => (
-              <div key={fact.label}>
-                <dt className="text-xs font-medium uppercase tracking-wider text-muted">
+              <div key={fact.label} className="card-bitnbolt p-4 sm:p-5">
+                <dt className="text-xs font-semibold uppercase tracking-wider text-muted">
                   {fact.label}
                 </dt>
-                <dd className="mt-1 text-sm font-semibold text-foreground">
+                <dd className="mt-1 text-sm font-bold text-[#0B1C2D]">
                   {"href" in fact && fact.href ? (
                     <a
                       href={fact.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-accent transition-colors hover:text-accent-hover"
+                      className="text-blue-600 transition-colors hover:text-blue-700"
                     >
                       {fact.value}
                     </a>
@@ -50,8 +50,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-100 bg-white py-12">
+        <div className="section-container">
           <SplitSection
             reverse
             visual={
@@ -64,11 +64,8 @@ export default function AboutPage() {
           >
             <ul className="grid gap-6">
               {aboutSections.slice(0, 2).map((item) => (
-                <li
-                  key={item.title}
-                  className="border border-border bg-surface-muted p-6"
-                >
-                  <h2 className="text-sm font-semibold text-foreground">
+                <li key={item.title} className="card-bitnbolt p-6">
+                  <h2 className="text-sm font-bold text-[#0B1C2D]">
                     {item.title}
                   </h2>
                   <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -81,8 +78,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface-muted">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="border-b border-gray-100 bg-gray-50 py-12">
+        <div className="section-container">
           <SplitSection
             visual={
               <ContentImage
@@ -94,11 +91,8 @@ export default function AboutPage() {
           >
             <ul className="grid gap-6">
               {aboutSections.slice(2).map((item) => (
-                <li
-                  key={item.title}
-                  className="border border-border bg-surface p-6"
-                >
-                  <h2 className="text-sm font-semibold text-foreground">
+                <li key={item.title} className="card-bitnbolt p-6">
+                  <h2 className="text-sm font-bold text-[#0B1C2D]">
                     {item.title}
                   </h2>
                   <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -111,17 +105,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <h2 className="text-lg font-semibold text-foreground">
-            What we value
-          </h2>
+      <section className="border-b border-gray-100 bg-white py-12">
+        <div className="section-container">
+          <h2 className="heading-section">What we value</h2>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2">
             {companyValues.map((item, index) => (
-              <li
-                key={item.title}
-                className="border border-border bg-surface-muted"
-              >
+              <li key={item.title} className="card-bitnbolt overflow-hidden">
                 <ContentImage
                   image={
                     [
@@ -133,9 +122,10 @@ export default function AboutPage() {
                   }
                   aspect="3/2"
                   objectFit="cover"
+                  className="[&_div]:rounded-none [&_div]:border-0 [&_div]:shadow-none"
                 />
                 <div className="p-6">
-                  <h3 className="text-sm font-semibold text-foreground">
+                  <h3 className="text-sm font-bold text-[#0B1C2D]">
                     {item.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -148,32 +138,28 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-surface-muted">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-          <p className="text-sm text-muted">
-            Explore our programs or visit the main company site.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/internships"
-              className="border border-accent bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:border-accent-hover hover:bg-accent-hover"
-            >
-              Internships
-            </Link>
-            <Link
-              href="/cap"
-              className="border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-border-strong hover:bg-surface"
-            >
-              CAP
-            </Link>
-            <a
-              href="https://www.bitnbolt.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-border-strong hover:bg-surface"
-            >
-              bitnbolt.in
-            </a>
+      <section className="bg-gray-50 py-12">
+        <div className="section-container">
+          <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
+            <p className="text-sm text-muted">
+              Explore our programs or visit the main company site.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/internships" className="btn-primary">
+                Internships
+              </Link>
+              <Link href="/cap" className="btn-secondary">
+                CAP
+              </Link>
+              <a
+                href="https://www.bitnbolt.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                bitnbolt.in
+              </a>
+            </div>
           </div>
         </div>
       </section>
