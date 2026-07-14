@@ -10,8 +10,15 @@ import {
 } from "react";
 import { ApplyFormModal } from "@/components/internships/apply-form-modal";
 
+export type ApplyTarget = {
+  jobId?: string;
+  jobTitle?: string;
+  categoryLabel?: string;
+  preferredTrack?: string;
+};
+
 interface InternshipApplyContextValue {
-  openApply: (categoryLabel?: string) => void;
+  openApply: (target?: ApplyTarget | string) => void;
   closeApply: () => void;
 }
 
@@ -21,10 +28,25 @@ const InternshipApplyContext = createContext<InternshipApplyContextValue | null>
 
 export function InternshipApplyProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
-  const [categoryLabel, setCategoryLabel] = useState("Internship");
+  const [target, setTarget] = useState<ApplyTarget>({
+    categoryLabel: "Internship",
+    jobTitle: "Internship",
+  });
 
-  const openApply = useCallback((label = "Internship") => {
-    setCategoryLabel(label);
+  const openApply = useCallback((arg: ApplyTarget | string = "Internship") => {
+    if (typeof arg === "string") {
+      setTarget({
+        categoryLabel: arg,
+        jobTitle: arg,
+      });
+    } else {
+      setTarget({
+        categoryLabel: arg.categoryLabel || arg.jobTitle || "Internship",
+        jobTitle: arg.jobTitle || arg.categoryLabel || "Internship",
+        jobId: arg.jobId,
+        preferredTrack: arg.preferredTrack || arg.categoryLabel,
+      });
+    }
     setOpen(true);
   }, []);
 
@@ -41,7 +63,10 @@ export function InternshipApplyProvider({ children }: { children: ReactNode }) {
       <ApplyFormModal
         open={open}
         onClose={closeApply}
-        categoryLabel={categoryLabel}
+        jobId={target.jobId}
+        jobTitle={target.jobTitle || "Role"}
+        categoryLabel={target.categoryLabel || "Internship"}
+        preferredTrack={target.preferredTrack}
       />
     </InternshipApplyContext.Provider>
   );

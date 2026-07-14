@@ -1,6 +1,6 @@
 "use client";
 
-import { useInternshipApply } from "@/components/internships/internship-apply-provider";
+import { useInternshipApply, type ApplyTarget } from "@/components/internships/internship-apply-provider";
 
 const variants = {
   primary: "btn-primary",
@@ -11,6 +11,9 @@ const variants = {
 
 interface ApplyNowButtonProps {
   categoryLabel?: string;
+  jobId?: string;
+  jobTitle?: string;
+  preferredTrack?: string;
   variant?: keyof typeof variants;
   className?: string;
   children?: React.ReactNode;
@@ -18,6 +21,9 @@ interface ApplyNowButtonProps {
 
 export function ApplyNowButton({
   categoryLabel,
+  jobId,
+  jobTitle,
+  preferredTrack,
   variant = "primary",
   className = "",
   children = "Apply now",
@@ -27,7 +33,15 @@ export function ApplyNowButton({
   return (
     <button
       type="button"
-      onClick={() => openApply(categoryLabel)}
+      onClick={() => {
+        const target: ApplyTarget = {
+          categoryLabel,
+          jobId,
+          jobTitle: jobTitle || categoryLabel,
+          preferredTrack: preferredTrack || categoryLabel,
+        };
+        openApply(target);
+      }}
       className={`${variants[variant]} ${className}`}
     >
       {children}

@@ -1,4 +1,5 @@
 export const siteNavLinks = [
+  { href: "/jobs", label: "Open roles" },
   { href: "/internships", label: "Internships" },
   { href: "/cap", label: "CAP" },
   { href: "/faq", label: "FAQ" },

@@ -1,19 +1,25 @@
 "use client";
 
 import { useEffect } from "react";
-import { GoogleFormEmbed } from "@/components/internships/google-form-embed";
+import { ApplicationForm } from "@/components/internships/application-form";
 import { SiteLogo } from "@/components/site-logo";
 
 interface ApplyFormModalProps {
   open: boolean;
   onClose: () => void;
+  jobId?: string;
+  jobTitle: string;
   categoryLabel: string;
+  preferredTrack?: string;
 }
 
 export function ApplyFormModal({
   open,
   onClose,
+  jobId,
+  jobTitle,
   categoryLabel,
+  preferredTrack,
 }: ApplyFormModalProps) {
   useEffect(() => {
     if (!open) return;
@@ -58,7 +64,7 @@ export function ApplyFormModal({
               Apply for {categoryLabel}
             </h2>
             <p className="mt-1 text-xs text-muted sm:text-sm">
-              BitnBolt is hiring for internships only. Complete the form below.
+              Complete the form below. Applications are reviewed by BitnBolt careers.
             </p>
           </div>
           <button
@@ -72,7 +78,24 @@ export function ApplyFormModal({
         </div>
 
         <div className="overflow-y-auto overscroll-contain p-3 sm:p-5">
-          <GoogleFormEmbed compact />
+          {jobId ? (
+            <ApplicationForm
+              jobId={jobId}
+              jobTitle={jobTitle}
+              preferredTrack={preferredTrack || categoryLabel}
+              compact
+              onSuccess={onClose}
+            />
+          ) : (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-6 text-center">
+              <p className="text-sm font-medium text-[#0B1C2D]">
+                Applications for this track are not open yet
+              </p>
+              <p className="mt-2 text-sm text-muted">
+                Please check back soon or email careers@bitnbolt.com.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -3,13 +3,18 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ApplyNowButton } from "@/components/internships/apply-now-button";
-import { GoogleFormEmbed } from "@/components/internships/google-form-embed";
+import { ApplicationForm } from "@/components/internships/application-form";
 import { useInternshipApply } from "@/components/internships/internship-apply-provider";
 import {
   defaultInternshipCategoryId,
   internshipCategories,
   type InternshipCategory,
 } from "@/lib/internships";
+import {
+  fetchCareerJobsClient,
+  findJobForCategory,
+  type CareerJob,
+} from "@/lib/career-api";
 
 function RoleIcon() {
   return (
@@ -82,25 +87,32 @@ function CategoryContent({ category }: { category: InternshipCategory }) {
 }
 
 interface InternshipProgramProps {
-  /** URL path used when syncing the selected category to the address bar */
   basePath?: string;
-  /** Section anchor id for in-page links (e.g. hero CTAs) */
   sectionId?: string;
-  /** Show the page-level h1 title (false on home where hero already has a heading) */
   showTitle?: boolean;
-  /** Inline form on /internships; modal popup on home */
   applyMode?: "inline" | "modal";
 }
 
-function HomeApplyLauncher({ categoryLabel }: { categoryLabel: string }) {
+function HomeApplyLauncher({
+  categoryLabel,
+  job,
+}: {
+  categoryLabel: string;
+  job?: CareerJob;
+}) {
   const searchParams = useSearchParams();
   const { openApply } = useInternshipApply();
 
   useEffect(() => {
     if (searchParams.get("apply")) {
-      openApply(categoryLabel);
+      openApply({
+        categoryLabel,
+        jobId: job?._id,
+        jobTitle: job?.title || categoryLabel,
+        preferredTrack: job?.category || categoryLabel,
+      });
     }
-  }, [searchParams, categoryLabel, openApply]);
+  }, [searchParams, categoryLabel, job, openApply]);
 
   return null;
 }
@@ -116,6 +128,25 @@ export function InternshipProgram({
   const categoryParam = searchParams.get("category");
 
   const [activeId, setActiveId] = useState(defaultInternshipCategoryId);
+  const [jobs, setJobs] = useState<CareerJob[]>([]);
+  const [jobsLoading, setJobsLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const items = await fetchCareerJobsClient();
+        if (!cancelled) setJobs(items);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (!cancelled) setJobsLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const setCategory = useCallback(
     (id: string) => {
@@ -142,6 +173,8 @@ export function InternshipProgram({
     internshipCategories.find((c) => c.id === activeId) ??
     internshipCategories[0];
 
+  const activeJob = findJobForCategory(jobs, active.id);
+
   return (
     <>
       <div
@@ -162,6 +195,7 @@ export function InternshipProgram({
           >
             {internshipCategories.map((cat) => {
               const isActive = cat.id === activeId;
+              const hasOpenRole = Boolean(findJobForCategory(jobs, cat.id));
               return (
                 <button
                   key={cat.id}
@@ -176,6 +210,11 @@ export function InternshipProgram({
                   }`}
                 >
                   {cat.tabLabel}
+                  {!jobsLoading && hasOpenRole ? (
+                    <span className="ml-1.5 hidden text-[10px] font-medium text-green-600 sm:inline">
+                      Open
+                    </span>
+                  ) : null}
                 </button>
               );
             })}
@@ -187,17 +226,21 @@ export function InternshipProgram({
 
           {applyMode === "modal" ? (
             <>
-              <HomeApplyLauncher categoryLabel={active.tabLabel} />
+              <HomeApplyLauncher categoryLabel={active.tabLabel} job={activeJob} />
               <div className="mt-10 rounded-lg border border-gray-100 bg-gray-50 p-6 sm:p-8">
                 <p className="text-sm font-bold text-[#0B1C2D]">
                   Ready to apply?
                 </p>
                 <p className="mt-2 max-w-xl text-sm text-muted">
-                  We are accepting internship applications only. Apply for the{" "}
-                  {active.tabLabel} track.
+                  {activeJob
+                    ? `Applications are open for the ${active.tabLabel} track.`
+                    : `We are not accepting applications for ${active.tabLabel} right now.`}
                 </p>
                 <ApplyNowButton
                   categoryLabel={active.tabLabel}
+                  jobId={activeJob?._id}
+                  jobTitle={activeJob?.title}
+                  preferredTrack={activeJob?.category || active.tabLabel}
                   className="mt-5"
                 />
               </div>
@@ -209,8 +252,26 @@ export function InternshipProgram({
               <h2 className="text-lg font-bold text-[#0B1C2D]">
                 Apply for {active.tabLabel}
               </h2>
-              <div className="mt-6 overflow-hidden rounded-lg border border-gray-100 shadow-sm">
-                <GoogleFormEmbed />
+              <div className="mt-6 overflow-hidden rounded-lg border border-gray-100 bg-white p-4 shadow-sm sm:p-6">
+                {jobsLoading ? (
+                  <p className="text-sm text-muted">Loading application…</p>
+                ) : activeJob ? (
+                  <ApplicationForm
+                    key={activeJob._id}
+                    jobId={activeJob._id}
+                    jobTitle={activeJob.title}
+                    preferredTrack={activeJob.category || active.tabLabel}
+                  />
+                ) : (
+                  <div className="py-6 text-center">
+                    <p className="text-sm font-medium text-[#0B1C2D]">
+                      Applications closed for this track
+                    </p>
+                    <p className="mt-2 text-sm text-muted">
+                      Check other tracks or email careers@bitnbolt.com.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           ) : null}

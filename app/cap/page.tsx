@@ -184,8 +184,7 @@ export default function CapPage() {
         <div className="section-container">
           <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
             <p className="text-sm text-muted">
-              Ready to apply? Use our internship application form and note your
-              interest in CAP in your submission, or email{" "}
+              Ready to apply? Submit your CAP application online, or email{" "}
               <a
                 href="mailto:careers@bitnbolt.com"
                 className="font-medium text-blue-600 transition-colors hover:text-blue-700"
@@ -195,11 +194,11 @@ export default function CapPage() {
               .
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/internships#apply" className="btn-primary">
-                Apply now
+              <Link href="/jobs/cap#apply" className="btn-primary">
+                Apply to CAP
               </Link>
-              <Link href="/internships" className="btn-secondary">
-                View internships
+              <Link href="/jobs" className="btn-secondary">
+                View open roles
               </Link>
             </div>
           </div>
