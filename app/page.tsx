@@ -3,14 +3,7 @@ import { CareersHero } from "@/components/careers-hero";
 import { HomeLandingSections } from "@/components/landing/home-landing-sections";
 import { InternshipApplyProvider } from "@/components/internships/internship-apply-provider";
 import { InternshipProgram } from "@/components/internships/internship-program";
-
-function InternshipFallback() {
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-20 text-center text-sm text-muted">
-      Loading internship programs…
-    </div>
-  );
-}
+import { InternshipProgramSkeleton } from "@/components/skeletons/InternshipProgramSkeleton";
 
 export default function Home() {
   return (
@@ -18,7 +11,11 @@ export default function Home() {
       <InternshipApplyProvider>
         <CareersHero />
         <HomeLandingSections variant="before-programs" />
-        <Suspense fallback={<InternshipFallback />}>
+        <Suspense
+          fallback={
+            <InternshipProgramSkeleton showTitle={false} applyMode="modal" />
+          }
+        >
           <InternshipProgram
             basePath="/"
             showTitle={false}

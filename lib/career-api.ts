@@ -34,7 +34,12 @@ export type ApplicationPayload = {
   source?: string;
 };
 
-function backendUrl() {
+/**
+ * Browser → same-origin `/api/career/*` (proxied by next.config rewrites).
+ * Server → absolute backend URL.
+ */
+function apiBase() {
+  if (typeof window !== "undefined") return "";
   return (
     process.env.NEXT_PUBLIC_BACKEND_URL?.replace(/\/$/, "") ||
     "https://bitnbolt.in"
@@ -50,7 +55,7 @@ export async function fetchCareerJobs(params?: {
   if (params?.category) search.set("category", params.category);
   search.set("pageSize", "50");
 
-  const res = await fetch(`${backendUrl()}/api/career/jobs?${search}`, {
+  const res = await fetch(`${apiBase()}/api/career/jobs?${search}`, {
     next: { revalidate: 60 },
   });
   if (!res.ok) throw new Error("Failed to load jobs");
@@ -59,7 +64,7 @@ export async function fetchCareerJobs(params?: {
 }
 
 export async function fetchCareerJob(idOrSlug: string): Promise<CareerJob | null> {
-  const res = await fetch(`${backendUrl()}/api/career/jobs/${idOrSlug}`, {
+  const res = await fetch(`${apiBase()}/api/career/jobs/${idOrSlug}`, {
     next: { revalidate: 60 },
   });
   if (res.status === 404) return null;
@@ -69,7 +74,7 @@ export async function fetchCareerJob(idOrSlug: string): Promise<CareerJob | null
 
 /** Client-side fetch (no cache). */
 export async function fetchCareerJobsClient(): Promise<CareerJob[]> {
-  const res = await fetch(`${backendUrl()}/api/career/jobs?pageSize=50`);
+  const res = await fetch(`/api/career/jobs?pageSize=50`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to load jobs");
   const data = (await res.json()) as { items?: CareerJob[] };
   return data.items || [];
@@ -78,7 +83,7 @@ export async function fetchCareerJobsClient(): Promise<CareerJob[]> {
 export async function fetchCareerJobClient(
   idOrSlug: string,
 ): Promise<CareerJob | null> {
-  const res = await fetch(`${backendUrl()}/api/career/jobs/${idOrSlug}`);
+  const res = await fetch(`/api/career/jobs/${idOrSlug}`, { cache: "no-store" });
   if (res.status === 404) return null;
   if (!res.ok) throw new Error("Failed to load job");
   return (await res.json()) as CareerJob;
@@ -87,7 +92,7 @@ export async function fetchCareerJobClient(
 export async function submitCareerApplication(
   payload: ApplicationPayload,
 ): Promise<{ success: boolean; message: string }> {
-  const res = await fetch(`${backendUrl()}/api/career/applications`, {
+  const res = await fetch(`/api/career/applications`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -118,5 +123,13 @@ export function findJobForCategory(
       (j) =>
         j.category.toLowerCase().replace(/[^a-z0-9]+/g, "-") === categoryId,
     )
+  );
+}
+
+export function findCapJob(jobs: CareerJob[]): CareerJob | undefined {
+  return (
+    jobs.find((j) => j.slug === "cap") ||
+    jobs.find((j) => j.slug === "career-accelerator-program-cap") ||
+    jobs.find((j) => j.type === "cap")
   );
 }

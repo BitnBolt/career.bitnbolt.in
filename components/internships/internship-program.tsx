@@ -15,6 +15,8 @@ import {
   findJobForCategory,
   type CareerJob,
 } from "@/lib/career-api";
+import { ApplicationFormSkeleton } from "@/components/skeletons/ApplicationFormSkeleton";
+import { Skeleton, SkeletonLine } from "@/components/skeletons/Skeleton";
 
 function RoleIcon() {
   return (
@@ -222,21 +224,31 @@ export function InternshipProgram({
             <>
               <HomeApplyLauncher categoryLabel={active.tabLabel} job={activeJob} />
               <div className="mt-10 rounded-lg border border-gray-100 bg-gray-50 p-6 sm:p-8">
-                <p className="text-sm font-bold text-[#0B1C2D]">
-                  Ready to apply?
-                </p>
-                <p className="mt-2 max-w-xl text-sm text-muted">
-                  {activeJob
-                    ? `Applications are open for the ${active.tabLabel} track.`
-                    : `We are not accepting applications for ${active.tabLabel} right now.`}
-                </p>
-                <ApplyNowButton
-                  categoryLabel={active.tabLabel}
-                  jobId={activeJob?._id}
-                  jobTitle={activeJob?.title}
-                  preferredTrack={activeJob?.category || active.tabLabel}
-                  className="mt-5"
-                />
+                {jobsLoading ? (
+                  <div role="status" aria-busy="true" aria-label="Loading apply section">
+                    <SkeletonLine className="h-4 w-28" />
+                    <SkeletonLine className="mt-3 h-4 w-full max-w-md" />
+                    <Skeleton className="mt-5 h-11 w-32 rounded-lg" />
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-sm font-bold text-[#0B1C2D]">
+                      Ready to apply?
+                    </p>
+                    <p className="mt-2 max-w-xl text-sm text-muted">
+                      {activeJob
+                        ? `Applications are open for the ${active.tabLabel} track.`
+                        : `We are not accepting applications for ${active.tabLabel} right now.`}
+                    </p>
+                    <ApplyNowButton
+                      categoryLabel={active.tabLabel}
+                      jobId={activeJob?._id}
+                      jobTitle={activeJob?.title}
+                      preferredTrack={activeJob?.category || active.tabLabel}
+                      className="mt-5"
+                    />
+                  </>
+                )}
               </div>
             </>
           ) : null}
@@ -248,7 +260,7 @@ export function InternshipProgram({
               </h2>
               <div className="mt-6 overflow-hidden rounded-lg border border-gray-100 bg-white p-4 shadow-sm sm:p-6">
                 {jobsLoading ? (
-                  <p className="text-sm text-muted">Loading application…</p>
+                  <ApplicationFormSkeleton />
                 ) : activeJob ? (
                   <ApplicationForm
                     key={activeJob._id}

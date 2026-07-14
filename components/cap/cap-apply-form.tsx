@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { ApplicationForm } from "@/components/internships/application-form";
-import { fetchCareerJobClient, type CareerJob } from "@/lib/career-api";
+import { ApplicationFormSkeleton } from "@/components/skeletons/ApplicationFormSkeleton";
+import { fetchCareerJobsClient, findCapJob, type CareerJob } from "@/lib/career-api";
 
 /** CAP page apply block — same form as internships, wired to the CAP job. */
 export function CapApplyForm() {
@@ -13,7 +14,8 @@ export function CapApplyForm() {
     let cancelled = false;
     (async () => {
       try {
-        const cap = await fetchCareerJobClient("cap");
+        const jobs = await fetchCareerJobsClient();
+        const cap = findCapJob(jobs) || null;
         if (!cancelled) setJob(cap);
       } catch (err) {
         console.error(err);
@@ -27,7 +29,7 @@ export function CapApplyForm() {
   }, []);
 
   if (loading) {
-    return <p className="text-sm text-muted">Loading application…</p>;
+    return <ApplicationFormSkeleton />;
   }
 
   if (!job) {

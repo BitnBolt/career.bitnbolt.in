@@ -198,11 +198,6 @@ export default function CapPage() {
             <div className="mt-6">
               <CapApplyForm />
             </div>
-            <div className="mt-6">
-              <Link href="/internships" className="btn-secondary">
-                View internships
-              </Link>
-            </div>
           </div>
         </div>
       </section>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 import { useAuth } from "@/components/providers/auth-provider";
+import { AuthPageSkeleton } from "@/components/skeletons/AuthPageSkeleton";
 
 interface RequireAuthProps {
   children: ReactNode;
@@ -23,11 +24,7 @@ export function RequireAuth({ children, redirectTo }: RequireAuthProps) {
   }, [isLoading, user, router, loginHref]);
 
   if (isLoading) {
-    return (
-      <div className="mx-auto max-w-lg px-4 py-20 text-center">
-        <p className="text-sm text-muted">Loading…</p>
-      </div>
-    );
+    return <AuthPageSkeleton />;
   }
 
   if (!user) {

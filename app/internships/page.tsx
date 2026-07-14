@@ -1,7 +1,6 @@
 import { Suspense } from "react";
-import { PageHero } from "@/components/page-hero";
 import { InternshipProgram } from "@/components/internships/internship-program";
-import { pageImages } from "@/lib/page-images";
+import { InternshipProgramSkeleton } from "@/components/skeletons/InternshipProgramSkeleton";
 
 export const metadata = {
   title: "Internship programs",
@@ -9,18 +8,14 @@ export const metadata = {
     "Browse and apply for engineering internships at BitnBolt — embedded systems, firmware, hardware, IoT platform, and software.",
 };
 
-function InternshipFallback() {
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-20 text-center text-sm text-muted">
-      Loading…
-    </div>
-  );
-}
-
 export default function InternshipsPage() {
   return (
     <main>
-      <Suspense fallback={<InternshipFallback />}>
+      <Suspense
+        fallback={
+          <InternshipProgramSkeleton showTitle={false} applyMode="inline" />
+        }
+      >
         <InternshipProgram applyMode="inline" showTitle={false} />
       </Suspense>
     </main>
