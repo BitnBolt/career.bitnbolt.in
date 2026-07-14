@@ -126,10 +126,16 @@ export function findJobForCategory(
   );
 }
 
-export function findCapJob(jobs: CareerJob[]): CareerJob | undefined {
-  return (
-    jobs.find((j) => j.slug === "cap") ||
-    jobs.find((j) => j.slug === "career-accelerator-program-cap") ||
-    jobs.find((j) => j.type === "cap")
-  );
+export async function fetchCapStatusClient(): Promise<{
+  isOpen: boolean;
+  jobId: string | null;
+  title: string;
+}> {
+  const res = await fetch(`/api/career/cap`, { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to load CAP status");
+  return (await res.json()) as {
+    isOpen: boolean;
+    jobId: string | null;
+    title: string;
+  };
 }

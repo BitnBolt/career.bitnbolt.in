@@ -3,22 +3,32 @@
 import { useEffect, useState } from "react";
 import { ApplicationForm } from "@/components/internships/application-form";
 import { ApplicationFormSkeleton } from "@/components/skeletons/ApplicationFormSkeleton";
-import { fetchCareerJobsClient, findCapJob, type CareerJob } from "@/lib/career-api";
+import { fetchCapStatusClient } from "@/lib/career-api";
 
-/** CAP page apply block — same form as internships, wired to the CAP job. */
+/**
+ * CAP page content is hardcoded. This form only depends on admin toggle + jobId.
+ */
 export function CapApplyForm() {
-  const [job, setJob] = useState<CareerJob | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [jobId, setJobId] = useState<string | null>(null);
+  const [title, setTitle] = useState("Career Accelerator Program (CAP)");
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        const jobs = await fetchCareerJobsClient();
-        const cap = findCapJob(jobs) || null;
-        if (!cancelled) setJob(cap);
+        const status = await fetchCapStatusClient();
+        if (cancelled) return;
+        setIsOpen(status.isOpen);
+        setJobId(status.jobId);
+        setTitle(status.title || "Career Accelerator Program (CAP)");
       } catch (err) {
         console.error(err);
+        if (!cancelled) {
+          setIsOpen(false);
+          setJobId(null);
+        }
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -32,7 +42,7 @@ export function CapApplyForm() {
     return <ApplicationFormSkeleton />;
   }
 
-  if (!job) {
+  if (!isOpen || !jobId) {
     return (
       <p className="text-sm text-muted">
         CAP applications are not open right now. Email{" "}
@@ -46,9 +56,9 @@ export function CapApplyForm() {
 
   return (
     <ApplicationForm
-      jobId={job._id}
-      jobTitle={job.title}
-      preferredTrack={job.category || "CAP"}
+      jobId={jobId}
+      jobTitle={title}
+      preferredTrack="CAP"
     />
   );
 }
