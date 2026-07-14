@@ -195,7 +195,6 @@ export function InternshipProgram({
           >
             {internshipCategories.map((cat) => {
               const isActive = cat.id === activeId;
-              const hasOpenRole = Boolean(findJobForCategory(jobs, cat.id));
               return (
                 <button
                   key={cat.id}
@@ -210,11 +209,6 @@ export function InternshipProgram({
                   }`}
                 >
                   {cat.tabLabel}
-                  {!jobsLoading && hasOpenRole ? (
-                    <span className="ml-1.5 hidden text-[10px] font-medium text-green-600 sm:inline">
-                      Open
-                    </span>
-                  ) : null}
                 </button>
               );
             })}

@@ -25,13 +25,13 @@ export function ApplicationsList() {
       <div className="border border-border bg-surface p-8 text-center">
         <p className="font-medium text-foreground">No applications yet</p>
         <p className="mt-2 text-sm text-muted">
-          Browse open roles and submit your first application.
+          Browse internship tracks and submit your first application.
         </p>
         <Link
-          href="/jobs"
+          href="/internships"
           className="mt-4 inline-block text-sm font-medium text-accent transition-colors hover:text-accent-hover"
         >
-          View open roles
+          View internship tracks
         </Link>
       </div>
     );
@@ -46,7 +46,7 @@ export function ApplicationsList() {
         >
           <div>
             <Link
-              href={`/jobs/${app.jobId}`}
+              href="/internships"
               className="font-medium text-foreground transition-colors hover:text-accent"
             >
               {app.jobTitle}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CapApplyForm } from "@/components/cap/cap-apply-form";
 import { CapCurriculum } from "@/components/cap/cap-curriculum";
 import { ContentImage } from "@/components/content-image";
 import { PageHero } from "@/components/page-hero";
@@ -180,11 +181,12 @@ export default function CapPage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-12">
+      <section id="apply" className="scroll-mt-16 bg-gray-50 py-12">
         <div className="section-container">
           <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
-            <p className="text-sm text-muted">
-              Ready to apply? Submit your CAP application online, or email{" "}
+            <p className="text-sm font-bold text-[#0B1C2D]">Apply to CAP</p>
+            <p className="mt-2 text-sm text-muted">
+              Submit your application below, or email{" "}
               <a
                 href="mailto:careers@bitnbolt.com"
                 className="font-medium text-blue-600 transition-colors hover:text-blue-700"
@@ -193,12 +195,12 @@ export default function CapPage() {
               </a>
               .
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/jobs/cap#apply" className="btn-primary">
-                Apply to CAP
-              </Link>
-              <Link href="/jobs" className="btn-secondary">
-                View open roles
+            <div className="mt-6">
+              <CapApplyForm />
+            </div>
+            <div className="mt-6">
+              <Link href="/internships" className="btn-secondary">
+                View internships
               </Link>
             </div>
           </div>

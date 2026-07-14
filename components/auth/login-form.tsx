@@ -9,7 +9,7 @@ export function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/jobs";
+  const redirect = searchParams.get("redirect") || "/internships";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -98,7 +98,7 @@ export function LoginForm() {
       <p className="border-t border-border px-6 py-4 text-center text-sm text-muted">
         No account?{" "}
         <Link
-          href={`/signup${redirect !== "/jobs" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`}
+          href={`/signup${redirect !== "/internships" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`}
           className="font-medium text-accent transition-colors hover:text-accent-hover"
         >
           Create one
